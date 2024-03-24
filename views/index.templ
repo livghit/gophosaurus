@@ -1,0 +1,41 @@
+package views
+
+import "github.com/livghit/gophosaurus/types"
+
+templ Hello(dinos []types.Dino) {
+	<style>
+.card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  background-color: #fff; /* White background */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 5px;
+  padding: 20px;
+  font-family: sans-serif; /* Modern sans-serif font */
+  text-align: center; /* Centered text */
+}
+
+.card p:first-child { /* Style the first paragraph (title) */
+  font-size: 20px;
+  margin-bottom: 10px; /* Increase spacing after title */
+  color: #333; /* Darker color for title */
+}
+
+.card p { /* Base styles for all paragraphs */
+  font-size: 16px;
+  line-height: 1.5; /* Improve readability with line spacing */
+  color: #777; /* More neutral text color */
+}
+	</style>
+	<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px;">
+		for _, dino := range dinos {
+			<div class="card">
+				<p>{ dino.Name }</p>
+				<p>{ dino.Description }</p>
+				<p>You can add more text here!</p>
+				<p>- Optional: Add a short message at the bottom.</p>
+			</div>
+		}
+	</div>
+}
