@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"log/slog"
 	"net/http"
 
 	"github.com/livghit/gophosaurus/types"
@@ -15,7 +16,7 @@ func main() {
 	server := http.NewServeMux()
 	dinos, err := fetchDinosaurs()
 	if err != nil {
-		return
+		slog.Error(err.Error())
 	}
 
 	server.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
