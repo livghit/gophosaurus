@@ -20,7 +20,7 @@ func main() {
 	}
 
 	server.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
-		views.Hello(dinos).Render(r.Context(), w)
+		views.DinoCards(dinos).Render(r.Context(), w)
 	})
 
 	port := ":3000"
