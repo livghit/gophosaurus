@@ -14,12 +14,12 @@ import (
 
 func main() {
 	server := http.NewServeMux()
-	dinos, err := fetchDinosaurs()
-	if err != nil {
-		slog.Error(err.Error())
-	}
 
 	server.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+		dinos, err := fetchDinosaurs()
+		if err != nil {
+			slog.Error(err.Error())
+		}
 		views.DinoCards(dinos).Render(r.Context(), w)
 	})
 
@@ -33,17 +33,18 @@ func fetchDinosaurs() ([]types.Dino, error) {
 
 	response, err := http.Get(url)
 	if err != nil {
-		return nil, fmt.Errorf("Error fetching dinosaurs data: %w", err)
+		return nil, err
 	}
 	defer response.Body.Close()
 
 	if response.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("Error: unexpected status code %d", response.StatusCode)
+		fmt.Errorf("Error: unexpected status code %d", response.StatusCode)
+		return nil, nil
 	}
 
 	data, err := io.ReadAll(response.Body)
 	if err != nil {
-		return nil, fmt.Errorf("Error reading response body: %w", err)
+		return nil, err
 	}
 
 	var dinos []types.Dino
