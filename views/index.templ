@@ -3,37 +3,25 @@ package views
 import "github.com/livghit/gophosaurus/types"
 
 templ DinoCards(dinos []types.Dino) {
-	<style>
-.card {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-  background-color: #fff; /* White background */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  border-radius: 5px;
-  padding: 20px;
-  font-family: sans-serif; /* Modern sans-serif font */
-  text-align: center; /* Centered text */
-}
-
-.card p:first-child { /* Style the first paragraph (title) */
-  font-size: 20px;
-  margin-bottom: 10px; /* Increase spacing after title */
-  color: #333; /* Darker color for title */
-}
-
-.card p { /* Base styles for all paragraphs */
-  font-size: 16px;
-  line-height: 1.5; /* Improve readability with line spacing */
-  color: #777; /* More neutral text color */
-}
-	</style>
-	<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px;">
-		for _, dino := range dinos {
-			<div class="card">
-				<p>{ dino.Name }</p>
-				<p>{ dino.Description }</p>
+	<html data-theme="nord">
+		<head>
+			<link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css"/>
+			<script src="https://cdn.tailwindcss.com"></script>
+		</head>
+		<main class="p-5">
+			<div class="grid grid-cols-4 gap-5">
+				for _, dino := range dinos {
+					<div class="card bg-base-100 shadow-xl">
+						<div class="card-body">
+							<h2 class="card-title">{ dino.Name }</h2>
+							<p>{ dino.Description }</p>
+							<div class="card-actions justify-end">
+								<button class="btn btn-primary">Learn More</button>
+							</div>
+						</div>
+					</div>
+				}
 			</div>
-		}
-	</div>
+		</main>
+	</html>
 }
