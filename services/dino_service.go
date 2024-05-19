@@ -17,8 +17,8 @@ func GetDinos(w http.ResponseWriter, r *http.Request) {
 		slog.Error(err.Error())
 	}
 	views.DinoCards(dinos).Render(r.Context(), w)
-
 }
+
 func fetchDinosaurs() ([]types.Dino, error) {
 	url := "https://dinosaur-facts-api.shultzlab.com/dinosaurs"
 
