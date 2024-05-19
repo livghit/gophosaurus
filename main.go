@@ -12,8 +12,9 @@ func main() {
 	server := http.NewServeMux()
 
 	server.HandleFunc("GET /", services.GetDinos)
+	server.HandleFunc("POST /searchDinos", services.SearchDinos)
 
-	port := ":3000"
+	port := ":3001"
 	log.Default().Print("Server running at ", port)
 
 	err := http.ListenAndServe(port, server)
