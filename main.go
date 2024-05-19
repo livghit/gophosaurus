@@ -11,8 +11,10 @@ import (
 func main() {
 	server := http.NewServeMux()
 
+	server.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	server.HandleFunc("GET /", services.GetDinos)
 	server.HandleFunc("POST /searchDinos", services.SearchDinos)
+	server.HandleFunc("GET /create/dino", services.CreateNewDinoView)
 
 	port := ":3001"
 	log.Default().Print("Server running at ", port)

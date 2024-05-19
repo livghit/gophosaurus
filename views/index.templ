@@ -17,7 +17,7 @@ templ Index(dinos []types.Dino) {
 	<div class="p-5">
 		<div class="navbar bg-primary flex justify-between text-white rounded-lg">
 			<a class="btn btn-ghost text-xl">Gophosaurus</a>
-			<form>
+			<form class="mt-2">
 				<label class="input input-bordered flex items-center gap-2">
 					<input type="text" name="search" class="grow text-black" placeholder="Search" hx-post="/searchDinos"
 						hx-trigger="input changed delay:500ms, search" hx-target="#dinos" hx-swap="outerHTML"
@@ -30,6 +30,11 @@ templ Index(dinos []types.Dino) {
 					</svg>
 				</label>
 			</form>
+		</div>
+		<div class="flex w-full justify-end mt-5">
+			<a href="/create/dino">
+				<button type="button" class="btn btn-primary">Create new Dino</button>
+			</a>
 		</div>
 	</div>
 	@partials.DinoCard(dinos)

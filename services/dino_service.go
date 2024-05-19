@@ -8,16 +8,22 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/livghit/gophosaurus/middleware"
 	"github.com/livghit/gophosaurus/types"
 	"github.com/livghit/gophosaurus/views"
 	"github.com/livghit/gophosaurus/views/partials"
 )
 
 func GetDinos(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		middleware.NotFoundHandler(w, r)
+		return
+	}
 	dinos, err := fetchDinosaurs()
 	if err != nil {
 		slog.Error(err.Error())
 	}
+	w.WriteHeader(http.StatusOK)
 	views.Index(dinos).Render(r.Context(), w)
 }
 
@@ -40,6 +46,7 @@ func SearchDinos(w http.ResponseWriter, r *http.Request) {
 				filtredDinos = append(filtredDinos, dino)
 			}
 		}
+		w.WriteHeader(http.StatusOK)
 		partials.DinoCard(filtredDinos).Render(r.Context(), w)
 	} else {
 		w.Write([]byte("Unsuported Request Method"))
@@ -71,4 +78,8 @@ func fetchDinosaurs() ([]types.Dino, error) {
 		panic(err)
 	}
 	return dinos, nil
+}
+
+func CreateNewDinoView(w http.ResponseWriter, r *http.Request) {
+	views.CreateDino().Render(r.Context(), w)
 }
