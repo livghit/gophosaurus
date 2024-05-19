@@ -13,6 +13,7 @@ func main() {
 
 	server.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	server.HandleFunc("GET /", services.GetDinos)
+	server.HandleFunc("GET /dino/{name}", services.GetDinoByName)
 	server.HandleFunc("POST /searchDinos", services.SearchDinos)
 	server.HandleFunc("GET /create/dino", services.CreateNewDinoView)
 

@@ -27,6 +27,17 @@ func GetDinos(w http.ResponseWriter, r *http.Request) {
 	views.Index(dinos).Render(r.Context(), w)
 }
 
+func GetDinoByName(w http.ResponseWriter, r *http.Request) {
+	dinoName := r.PathValue("name")
+
+	if dinoName == "" {
+		views.NotFoundView().Render(r.Context(), w)
+	}
+
+	w.Write([]byte("Well we got the dino : " + dinoName))
+
+}
+
 func SearchDinos(w http.ResponseWriter, r *http.Request) {
 	if r.Header.Get("HX-Request") == "true" {
 		dinos, err := fetchDinosaurs()

@@ -19,7 +19,7 @@ templ DinoCard(dinos []types.Dino) {
 			<h2 class="card-title">{ dino.Name }</h2>
 			<p>{ dino.Description }</p>
 			<div class="card-actions justify-end">
-				<button class="btn btn-primary">Learn More</button>
+				<a href={ templ.URL("/dino/" + dino.Name) } class="btn btn-primary">Learn More</a>
 			</div>
 		</div>
 	</div>

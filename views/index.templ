@@ -17,7 +17,7 @@ templ Index(dinos []types.Dino) {
 	<div class="p-5">
 		<div class="navbar bg-primary flex justify-between text-white rounded-lg">
 			<a class="btn btn-ghost text-xl">Gophosaurus</a>
-			<form class="mt-2">
+			<form class="mt-2" onsubmit="return false">
 				<label class="input input-bordered flex items-center gap-2">
 					<input type="text" name="search" class="grow text-black" placeholder="Search" hx-post="/searchDinos"
 						hx-trigger="input changed delay:500ms, search" hx-target="#dinos" hx-swap="outerHTML"
