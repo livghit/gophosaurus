@@ -1,27 +1,31 @@
 package views
 
 import "github.com/livghit/gophosaurus/types"
+import "github.com/livghit/gophosaurus/views/partials"
 
 templ DinoCards(dinos []types.Dino) {
-	<html data-theme="nord">
-		<head>
-			<link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css"/>
-			<script src="https://cdn.tailwindcss.com"></script>
-		</head>
-		<main class="p-5">
-			<div class="grid grid-cols-4 gap-5">
-				for _, dino := range dinos {
-					<div class="card bg-base-100 shadow-xl">
-						<div class="card-body">
-							<h2 class="card-title">{ dino.Name }</h2>
-							<p>{ dino.Description }</p>
-							<div class="card-actions justify-end">
-								<button class="btn btn-primary">Learn More</button>
-							</div>
-						</div>
-					</div>
-				}
+<html data-theme="lofi">
+
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+@partials.Navigation()
+<main class="p-5">
+	<div class="grid grid-cols-4 gap-5">
+		for _, dino := range dinos {
+		<div class="card bg-base-100 shadow-xl">
+			<div class="card-body">
+				<h2 class="card-title">{ dino.Name }</h2>
+				<p>{ dino.Description }</p>
+				<div class="card-actions justify-end">
+					<button class="btn btn-primary">Learn More</button>
+				</div>
 			</div>
-		</main>
-	</html>
+		</div>
+		}
+	</div>
+</main>
+
+</html>
 }
