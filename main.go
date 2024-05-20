@@ -17,7 +17,7 @@ func main() {
 	server.HandleFunc("POST /searchDinos", services.SearchDinos)
 	server.HandleFunc("GET /create/dino", services.CreateNewDinoView)
 
-	port := ":3001"
+	port := ":3000"
 	log.Default().Print("Server running at ", port)
 
 	err := http.ListenAndServe(port, server)

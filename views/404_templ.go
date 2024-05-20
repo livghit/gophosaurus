@@ -23,7 +23,7 @@ func NotFoundView() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html data-theme=\"lofi\"><head><link href=\"https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css\" rel=\"stylesheet\" type=\"text/css\"><script src=\"https://cdn.tailwindcss.com\"></script></head><main class=\"p-5\"><div class=\"grid h-screen justify-center place-content-center bg-white px-4 gap-5\"><div class=\"w-full flex flex-col justify-center snap-center aling-middle gap-5\"><a href=\"/\" class=\"uppercase tracking-widest text-gray-500 text-3xl\">404 | Not Found</a> <img src=\"/static/dino.png\" alt=\"random dino\" class=\" w-40 h-40 rounded-full tracking-widset\"></div></div></main></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<html data-theme=\"lofi\"><head><link href=\"https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css\" rel=\"stylesheet\" type=\"text/css\"><script src=\"https://cdn.tailwindcss.com\"></script></head><main class=\"p-5\"><div class=\"grid h-screen justify-center place-content-center bg-white px-4 gap-5\"><div class=\"w-full flex flex-col justify-center snap-center aling-middle gap-5\"><a href=\"/\" class=\"uppercase tracking-widest text-gray-500 text-3xl text-center font-bold\">404 | Not Found</a> <img src=\"/static/dino.png\" alt=\"random dino\" class=\" w-82 h-80 rounded-lg\"> <a href=\"/\" class=\"btn\">Back Home</a></div></div></main></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
